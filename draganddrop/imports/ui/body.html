@@ -1,0 +1,42 @@
+<body>
+  <h1>Welcome to Meteor!</h1>
+
+	{{> categories}}
+	{{> graph_dragList}}
+
+</body>
+
+
+<template name="categories">
+	<select id="category-select">
+		<option disabled="disabled" selected="selected">Please Select</option> 
+			{{#each categories}}
+				<option value="{{this}}">{{this}}</option>
+			{{/each}}
+		</select>
+</template>
+
+
+<template name="graph_dragList">
+	<div class='parent'>
+		<div class='wrapper'>
+		  <div id='sortable' class='container'>
+			{{#each items}}
+			  <div>
+					<span class="handle">+</span>
+					{{> item}}
+					<span class="remove">x</span>
+				</div>
+			{{/each}}
+		  </div>
+		</div>
+		
+	</div>
+</template>
+
+<template name="item">
+	{{text}}
+</template>
+
+
+
