@@ -2,7 +2,7 @@
   <h1>Welcome to Meteor!</h1>
 
 	{{> categories}}
-	{{> graph_dragList}}
+	{{> dragList}}
 
 </body>
 
@@ -17,26 +17,62 @@
 </template>
 
 
-<template name="graph_dragList">
+<template name="dragList">
 	<div class='parent'>
 		<div class='wrapper'>
 		  <div id='sortable' class='container'>
-			{{#each items}}
-			  <div>
-					<span class="handle">+</span>
-					{{> item}}
-					<span class="remove">x</span>
-				</div>
-			{{/each}}
+				
+			<!-- Dynamically added in here -->
+				
+				
+				
 		  </div>
 		</div>
 		
 	</div>
 </template>
 
-<template name="item">
-	{{text}}
+
+
+
+<template name="item_1">
+	<div>
+		<span class="handle">+</span>
+			"This is item 1"
+		<span class="remove">x</span>
+	</div>
 </template>
 
+<template name="item_2">
+	<div>
+		<span class="handle">+</span>
+			"This is item 2"
+		<span class="remove">x</span>
+	</div>
+</template>
+
+<template name="item_3">
+	<div>
+		<span class="handle">+</span>
+			"This is item 3"
+		<span class="remove">x</span>
+	</div>
+</template>
+
+<template name="item_4">
+	<div>
+		<span class="handle">+</span>
+			"This is item 4"
+		<span class="remove">x</span>
+	</div>
+</template>
+
+<template name="item_5">
+	<div>
+		<span class="handle">+</span>
+			"This is item 5"
+		<span class="remove">x</span>
+	</div>
+</template>
 
 

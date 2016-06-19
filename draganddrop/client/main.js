@@ -11,7 +11,7 @@ Template.categories.helpers({
 		for (var key in Template) {
 		  if (Template.hasOwnProperty(key)) {
 			// Meteor internal templates begin with _
-			if (key.indexOf('graph_') > -1) {
+			if (key.indexOf('item_') > -1) {
 			  template_names.push(key);
 			  console.log(key);
 			}
@@ -25,7 +25,10 @@ Template.categories.events({
     "change #category-select": function (event, template) {
         var category = $(event.currentTarget).val();
         console.log("category : " + category);
-        // additional code to do what you want with the category
+ 
+		Blaze.renderWithData(Template[category], {my: "data"}, $("#sortable")[0])
+
+		
     }
 });
 
@@ -33,7 +36,7 @@ Template.categories.events({
 
 
 
-Template.graph_dragList.onRendered(function(){
+Template.dragList.onRendered(function(){
 	dragula([document.querySelector('.container')], {
 	  moves: function (el, container, handle) {
 		return handle.className === 'handle';
@@ -43,14 +46,14 @@ Template.graph_dragList.onRendered(function(){
       
 });
 
-Template.graph_dragList.events({
+Template.dragList.events({
 	'click .remove': function (e) {  
 		$(event.target).closest('div').remove()	
 	}
 });
   
 	  
-Template.graph_dragList.helpers({
+Template.dragList.helpers({
   items: [
     { text: 'This is item 1' },
     { text: 'This is item 2' },
