@@ -1,9 +1,13 @@
 <body>
   <h1>Welcome to Meteor!</h1>
-
-	{{> categories}}
-	{{> dragList}}
-
+	<p>{{> loginButtons}}</p>
+	
+	{{#if currentUser}}
+		{{> categories}}
+		{{> dragList}}
+	{{else}}
+		<p>You must be logged-in to see this content.</p>
+	{{/if}}
 </body>
 
 
@@ -20,13 +24,14 @@
 <template name="dragList">
 	<div class='parent'>
 		<div class='wrapper'>
-		  <div id='sortable' class='container'>
-				
-			<!-- Dynamically added in here -->
-				
-				
-				
-		  </div>
+			<div id='sortable' class='container'>
+				{{#each items}}		
+
+					
+					{{> Template.dynamic template=this}}
+					
+				{{/each}}		
+			</div>
 		</div>
 		
 	</div>

@@ -1,7 +1,10 @@
 import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
 
+import { Items } from '../imports/api/items.js'
+
 import '../imports/ui/body.js';
+
 
 
 Template.categories.helpers({
@@ -21,16 +24,23 @@ Template.categories.helpers({
     }
 });
 
+var itemsAdded = [];
+
 Template.categories.events({
     "change #category-select": function (event, template) {
         var category = $(event.currentTarget).val();
-        console.log("category : " + category);
  
-		Blaze.renderWithData(Template[category], {my: "data"}, $("#sortable")[0])
+		addToCanvas(category)
 
-		
+		itemsAdded.push(category)
+		Meteor.call('update', itemsAdded);
     }
 });
+
+function addToCanvas(template)
+{
+	Blaze.renderWithData(Template[template], {my: "data"}, $("#sortable")[0])
+}
 
 
 
@@ -52,12 +62,3 @@ Template.dragList.events({
 	}
 });
   
-	  
-Template.dragList.helpers({
-  items: [
-    { text: 'This is item 1' },
-    { text: 'This is item 2' },
-    { text: 'This is item 3' },
-  ],
-});
-
