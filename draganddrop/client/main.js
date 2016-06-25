@@ -6,11 +6,12 @@ import { Items } from '../imports/api/items.js'
 import '../imports/ui/body.js';
 
 
+var template_names = [];
+selected = [];
 
 Template.categories.helpers({
     categories: function(){
-		
-		var template_names = [];
+		template_names = [];	
 		for (var key in Template) {
 		  if (Template.hasOwnProperty(key)) {
 			// Meteor internal templates begin with _
@@ -19,21 +20,20 @@ Template.categories.helpers({
 			  console.log(key);
 			}
 		  }
-}
+		}
         return template_names
     }
 });
 
-var itemsAdded = [];
 
 Template.categories.events({
     "change #category-select": function (event, template) {
         var category = $(event.currentTarget).val();
  
-		addToCanvas(category)
+		//addToCanvas(category)
 
-		itemsAdded.push(category)
-		Meteor.call('update', itemsAdded);
+		selected.push(category)
+		Meteor.call('update', selected);
     }
 });
 

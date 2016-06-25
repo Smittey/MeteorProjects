@@ -4,6 +4,7 @@ import { Mongo } from 'meteor/mongo';
 
 
 import './body.html';
+//import '../../client/main.js';
 
 Template.dragList.helpers({
     items: function () {
@@ -11,9 +12,9 @@ Template.dragList.helpers({
 		console.log(capture);
 		
 		var layouts = 	capture.fetch(function(doc){
-		 return doc.layout;
+			return doc.layout;
 		});
-		
+		selected = layouts[0].layout;
 		return layouts[0].layout;
       }    
 });
